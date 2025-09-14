@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Šikovné Kuchyne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Moderné a elegantné fonty */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Vlastné triedy pre farby */
+        .bg-charcoal {
+            background-color: #2c3e50;
+        }
+        .text-charcoal {
+            color: #2c3e50;
+        }
+        .accent-color {
+            color: #d35400; /* Decentná, ale výrazná oranžová */
+        }
+        .bg-accent {
+            background-color: #d35400;
+        }
+        .btn-outline {
+            border: 2px solid #2c3e50;
+            color: #2c3e50;
+        }
+        .btn-outline:hover {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        /* Efekt rozmazania na pozadí pre Hero sekciu */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/1920x1080/616161/fff?text=Elegantný+interiér+kuchyne');
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        /* Priehľadná navigácia */
+        .header-transparent {
+            background: transparent;
+            transition: background-color 0.3s;
+        }
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efekt kariet v galérii */
+        .card-hover:hover .overlay {
+            opacity: 1;
+        }
+        .overlay {
+            background-color: rgba(44, 62, 80, 0.7);
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100 text-charcoal">
+
+    <!-- Navigácia -->
+    <header id="main-header" class="header-transparent fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Šikovné Kuchyne</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#o-nas" class="text-white hover:text-gray-300 transition-colors duration-300">O nás</a>
+                <a href="#kvalita" class="text-white hover:text-gray-300 transition-colors duration-300">Kvalita</a>
+                <a href="#proces" class="text-white hover:text-gray-300 transition-colors duration-300">Náš proces</a>
+                <a href="#sluzby" class="text-white hover:text-gray-300 transition-colors duration-300">Služby</a>
+                <a href="#galeria" class="text-white hover:text-gray-300 transition-colors duration-300">Galéria</a>
+                <a href="#kontakt" class="text-white hover:text-gray-300 transition-colors duration-300">Kontakt</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal shadow-lg py-4 text-center">
+            <a href="#o-nas" class="block px-4 py-2 text-white hover:bg-gray-700">O nás</a>
+            <a href="#kvalita" class="block px-4 py-2 text-white hover:bg-gray-700">Kvalita</a>
+            <a href="#proces" class="block px-4 py-2 text-white hover:bg-gray-700">Náš proces</a>
+            <a href="#sluzby" class="block px-4 py-2 text-white hover:bg-gray-700">Služby</a>
+            <a href="#galeria" class="block px-4 py-2 text-white hover:bg-gray-700">Galéria</a>
+            <a href="#kontakt" class="block px-4 py-2 text-white hover:bg-gray-700">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Hlavná sekcia (Hero) -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden p-6">
+        <div class="hero-bg"></div>
+        <div class="relative z-10 text-white max-w-3xl">
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-md">
+                Šikovné Kuchyne
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 drop-shadow-md font-light">
+                Precízne navrhnutý nábytok, ktorý transformuje váš domov.
+            </p>
+            <a href="#kontakt" class="bg-accent text-white font-semibold py-3 px-8 rounded-full transition-transform transform hover:scale-105 shadow-lg">
+                Získať bezplatný návrh
+            </a>
+        </div>
+    </section>
+
+    <!-- Sekcia o nás -->
+    <section id="o-nas" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h2 class="text-4xl font-bold text-charcoal mb-6">Príbeh remesla a vášne</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Sme malá, rodinná firma, ktorá verí, že kvalita je v detailoch. Každý kus nábytku, ktorý vyrobíme, je výsledkom precíznej práce a hlbokého rešpektu k remeslu. Neponúkame len produkty, ale jedinečné riešenia šité na mieru vášmu životu a priestoru.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Od prvého stretnutia až po konečnú montáž je naším cieľom priniesť dokonalosť a premeniť vaše predstavy na skutočnosť, ktorá pretrvá.
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/fff/d35400?text=Kvalita+a+dizajn" alt="Team Šikovné Kuchyne" class="rounded-xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia Kvalita -->
+    <section id="kvalita" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <img src="https://placehold.co/600x400/fff/2c3e50?text=Egger+a+Blum" alt="Materiály Egger a Blum" class="rounded-xl shadow-xl">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-4xl font-bold text-charcoal mb-6">Kvalita, na ktorú sa môžete spoľahnúť</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Pri výrobe nášho nábytku používame výhradne materiály od popredných európskych výrobcov, pretože veríme, že pravá kvalita začína pri prvom reze.
+                    </p>
+                    <ul class="space-y-4 text-gray-700">
+                        <li>
+                            <p class="font-semibold text-lg text-charcoal">Drevotrieska EGGER</p>
+                            <p class="text-gray-600">Používame len certifikovanú drevotriesku od rakúskej spoločnosti **Egger**, ktorá je synonymom pre dlhú životnosť a stálosť farieb.</p>
+                        </li>
+                        <li>
+                            <p class="font-semibold text-lg text-charcoal">Kovania BLUM</p>
+                            <p class="text-gray-600">Pre kovanie a výsuvné systémy sme sa rozhodli pre **Blum**. Ich kvalita je taká vysoká, že na všetky mechanizmy poskytujú **doživotnú záruku**.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia Proces tvorby -->
+    <section id="proces" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="text-4xl font-bold text-charcoal mb-4">Náš proces tvorby nábytku</h2>
+            <p class="text-gray-600 mb-12 max-w-3xl mx-auto">
+                Naša práca je zameraná na to, aby bol celý proces pre vás jednoduchý a transparentný. Všetko prebieha v niekoľkých jasných krokoch, ktoré vedú k dokonalému výsledku.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Krok 1 -->
+                <div class="bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <div class="text-4xl accent-color mb-3 font-bold">1</div>
+                    <h3 class="text-xl font-bold text-charcoal mb-2">Detailné zameranie</h3>
+                    <p class="text-gray-600">
+                        Presné a detailné zameranie vášho priestoru je základom pre dokonalý výsledok bez prekvapení.
+                    </p>
+                </div>
+                <!-- Krok 2 -->
+                <div class="bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <div class="text-4xl accent-color mb-3 font-bold">2</div>
+                    <h3 class="text-xl font-bold text-charcoal mb-2">Vizuálny návrh</h3>
+                    <p class="text-gray-600">
+                        Pripravíme 3D vizualizáciu, ktorá vám umožní vidieť váš nábytok ešte pred samotnou výrobou.
+                    </p>
+                </div>
+                <!-- Krok 3 -->
+                <div class="bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <div class="text-4xl accent-color mb-3 font-bold">3</div>
+                    <h3 class="text-xl font-bold text-charcoal mb-2">Výroba a realizácia</h3>
+                    <p class="text-gray-600">
+                        V našej dielni premeníme návrh na skutočnosť s dôrazom na každý detail a precíznosť.
+                    </p>
+                </div>
+                <!-- Krok 4 -->
+                <div class="bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <div class="text-4xl accent-color mb-3 font-bold">4</div>
+                    <h3 class="text-xl font-bold text-charcoal mb-2">Montáž a odovzdanie</h3>
+                    <p class="text-gray-600">
+                        Nainštalujeme hotový nábytok a odovzdáme vám dielo. Vaša spokojnosť je pre nás najdôležitejšia!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia Služby -->
+    <section id="sluzby" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center max-w-5xl">
+            <h2 class="text-4xl font-bold text-charcoal mb-4">Naša ponuka</h2>
+            <p class="text-gray-600 mb-16 max-w-3xl mx-auto">
+                Špecializujeme sa na kompletné interiérové riešenia pre váš domov. Vďaka **optimalizácii našich výrobných procesov** dokážeme ponúknuť efektívnu cenotvorbu, ktorá je výrazne nižšia ako u konkurencie, no s **dôrazom na najvyššiu kvalitu** a bez akýchkoľvek kompromisov.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Karta Služby 1 -->
+                <div class="bg-gray-100 p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-5xl accent-color mb-4">
+                        <svg class="w-16 h-16 inline-block" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 21h20L12 2zm0 15L6 7h12l-6 10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal mb-2">Kuchyne na mieru</h3>
+                    <p class="text-gray-600">
+                        Navrhujeme a vyrábame moderné, minimalistické kuchyne s dôrazom na funkčnosť a najvyššiu kvalitu materiálov.
+                    </p>
+                </div>
+                <!-- Karta Služby 2 -->
+                <div class="bg-gray-100 p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-5xl accent-color mb-4">
+                        <svg class="w-16 h-16 inline-block" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8 11.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm5.5 1.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal mb-2">Rekonštrukcie</h3>
+                    <p class="text-gray-600">
+                        Kompletná premena vašej existujúcej kuchyne. Navrhneme, zrealizujeme a privedieme do dokonalosti.
+                    </p>
+                </div>
+                <!-- Karta Služby 3 -->
+                <div class="bg-gray-100 p-8 rounded-xl shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-5xl accent-color mb-4">
+                        <svg class="w-16 h-16 inline-block" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 20H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-6l-4 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal mb-2">Nábytok na mieru</h3>
+                    <p class="text-gray-600">
+                        Vytvoríme jedinečný nábytok pre akúkoľvek miestnosť – od šatníkov, po obývacie steny a kúpelne.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia Galéria -->
+    <section id="galeria" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-bold text-charcoal text-center mb-16">Galéria našich prác</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projekt 1 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/95a5a6/fff?text=Elegantná+kuchyňa" alt="Projekt kuchyne 1" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Moderná kuchyňa</p>
+                    </div>
+                </div>
+                <!-- Projekt 2 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/bdc3c7/fff?text=Minimalistický+nábytok" alt="Projekt nábytku 1" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Nábytok na mieru</p>
+                    </div>
+                </div>
+                <!-- Projekt 3 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/7f8c8d/fff?text=Drevené+detaily" alt="Projekt kuchyne 2" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Rekonštrukcia bytu</p>
+                    </div>
+                </div>
+                <!-- Projekt 4 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/95a5a6/fff?text=Luxusný+šatník" alt="Projekt šatníka" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Šatník na mieru</p>
+                    </div>
+                </div>
+                <!-- Projekt 5 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/bdc3c7/fff?text=Moderná+spálňa" alt="Projekt spálne" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Spálňa na mieru</p>
+                    </div>
+                </div>
+                <!-- Projekt 6 -->
+                <div class="card-hover relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/7f8c8d/fff?text=Kúpeľňa+na+mieru" alt="Projekt kúpeľne" class="w-full h-full object-cover">
+                    <div class="overlay absolute top-0 left-0 w-full h-full flex items-center justify-center text-center">
+                        <p class="text-white text-xl font-bold tracking-wide">Kúpeľňa na mieru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia Kontakt -->
+    <section id="kontakt" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-xl text-center">
+            <h2 class="text-4xl font-bold text-charcoal mb-4">Začnite s nami</h2>
+            <p class="text-gray-600 mb-12">Povedzte nám o svojom projekte a my sa vám ozveme s bezplatným poradenstvom a cenovou ponukou. Poskytujeme efektívne riešenia pre každý rozpočet, bez kompromisov na kvalite.</p>
+            <form class="space-y-6">
+                <input type="text" placeholder="Vaše meno" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-color transition-colors">
+                <input type="email" placeholder="Váš email" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-color transition-colors">
+                <textarea placeholder="Popis vášho projektu" rows="5" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-color transition-colors"></textarea>
+                <button type="submit" class="bg-charcoal text-white font-semibold py-4 px-8 rounded-full w-full transition-transform transform hover:scale-105 shadow-lg">
+                    Odoslať dopyt
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pätička (Footer) -->
+    <footer class="bg-charcoal text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-2xl font-bold">Šikovné Kuchyne</div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-gray-300">Facebook</a>
+                    <a href="#" class="hover:text-gray-300">Instagram</a>
+                    <a href="#" class="hover:text-gray-300">LinkedIn</a>
+                </div>
+                <p>&copy; 2024 Šikovné Kuchyne. Všetky práva vyhradené.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JS pre mobilné menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hladké scrollovanie
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (!mobileMenu.classList.contains('hidden')) {
+                     mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Zmena navigácie pri scrollovaní
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            const links = header.querySelectorAll('nav a');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+                header.classList.remove('header-transparent');
+                links.forEach(link => {
+                    if(link.href.includes('#')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-charcoal');
+                    }
+                });
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.add('header-transparent');
+                links.forEach(link => {
+                    if(link.href.includes('#')) {
+                        link.classList.remove('text-charcoal');
+                        link.classList.add('text-white');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
